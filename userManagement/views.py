@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from userManagement.serializer import RegisterSerializer, loginSerializer, userRolesSerializer, userSerializer
+from rest_framework.views import APIView
 from rest_framework import generics, status, views, permissions, parsers
 from .models import user, UserRoles
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -23,6 +24,14 @@ class RegistrationView(generics.GenericAPIView):
         #frontend_uri = os.environ.get('EMAIL_VERIFICATION_URL')
         #abs_urls = frontend_uri + '?token=' + str(token)
         return Response(user_data, status=status.HTTP_201_CREATED)
+class add_user_roles(APIView):
+    def post(self,request,*args,**kwargs):
+        data = request.data
+        serializer = userRolesSerializer(data= data)
+        if serializer.is_valid():
+            serializer.save()
+        return Response(serializer.data)
+
     
     
 class LoginView(generics.GenericAPIView):
