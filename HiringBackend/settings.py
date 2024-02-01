@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'HiringBackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hiring_dev',
-        'USER': 'root',
-        'PASSWORD':'Password123',
+        'NAME': 'developement',
+        'USER': 'test',
+        'PASSWORD':'Test@123',
         'HOST': 'localhost',
         'PORT': '3306',
     }
